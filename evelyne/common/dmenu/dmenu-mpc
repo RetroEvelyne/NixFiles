@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+playing=$(mpc current)
+[ -z "$playing" ] && playing="Stopped"
+
+▶️play()   { mpc play   ;}
+⏸️pause()  { mpc pause  ;}
+⏭️next()   { mpc next   ;}
+⏮️prev()   { mpc prev   ;}
+⏹️stop()   { mpc stop   ;}
+🔄update() { mpc update ;}
+
+func="$(declare -F | awk '{print $3}' | dmenu -i -p "$playing":)"
+[ -z "$func" ] || "$func"

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+poweroff()   { systemctl shutdown   ;}
+restart()    { killall -HUP dwm     ;}
+reboot()     { system reboot        ;}
+lock()       { bosskey              ;}
+
+func="$(declare -F | awk '{print $3}' | dmenu -i -p "Power:")"
+[ -z "$func" ] || "$func"

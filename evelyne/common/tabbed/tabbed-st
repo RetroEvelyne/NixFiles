@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+picom-trans -w $(tabbed $@ -d -n "tabbed-trans" -r 2 st -w '') -o 90

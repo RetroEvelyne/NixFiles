@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+NOTIFICATIONS_TITLE="KDE Connect"
+NOTIFICATIONS_EXPIRE_TIME=1000
+notify-send "$NOTIFICATIONS_TITLE" "Getting devices..." --expire-time="$NOTIFICATIONS_EXPIRE_TIME"
+
+# Get available devices
+devices="$(kdeconnect-cli -a)"
+[ -z "$devices" ] && notify-send "$NOTIFICATIONS_TITLE" "No devices available" --expire-time="$NOTIFICATIONS_EXPIRE_TIME" && exit 1
+
+# Let the user choose a device
+device="$(echo "$devices" | sed 's/-\ //' | sed 's/:.*//' | dmenu -i -p "Devices:")"
+
+if [ $? -eq 0 ]
+then
+  # Send files to a device
+  📂File() {
+    file="$(zenity --file-selection)"
+    kdeconnect-cli -n "$device" --share "$file"
+    [ "$?" -eq 0 ] && notify-send "$NOTIFICATIONS_TITLE" "📂 Shared file: $file" --expire-time="$NOTIFICATIONS_EXPIRE_TIME"
+    [ "$?" -ne 0 ] && notify-send "$NOTIFICATIONS_TITLE" "📂 Failed to share file: $file" --expire-time="$NOTIFICATIONS_EXPIRE_TIME" && exit 1
+  }
+
+  # Ping a device
+  📳Ping() {
+    kdeconnect-cli -n "$device" --ping
+    [ "$?" -eq 0 ] && notify-send "$NOTIFICATIONS_TITLE" "📳 Pinged device: $device" --expire-time="$NOTIFICATIONS_EXPIRE_TIME"
+    [ "$?" -ne 0 ] && notify-send "$NOTIFICATIONS_TITLE" "📳 Unable to ping device: $device" --expire-time="$NOTIFICATIONS_EXPIRE_TIME" && exit 1
+  }
+
+  # Make a device ring
+  ☎️Ring() {
+    kdeconnect-cli -n "$device" --ring
+    [ "$?" -eq 0 ] && notify-send "$NOTIFICATIONS_TITLE" "☎️ Ringed device: $device" --expire-time="$NOTIFICATIONS_EXPIRE_TIME"
+    [ "$?" -ne 0 ] && notify-send "$NOTIFICATIONS_TITLE" "☎️ Unable to ring device: $device" --expire-time="$NOTIFICATIONS_EXPIRE_TIME" && exit 1
+  }
+
+  # Show functions in dmenu and run the chosen function
+  func="$(declare -F | awk '{print $3}' | dmenu -i -p "$device":)"
+  [ -z "$func" ] || "$func"
+fi

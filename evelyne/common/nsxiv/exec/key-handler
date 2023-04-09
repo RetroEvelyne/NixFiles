@@ -1,0 +1,14 @@
+#!/bin/sh
+while read file
+do
+  case "$1" in
+  "d")
+    rm -rf $file ;;
+  "r")
+    convert -rotate 90 "$file" "$file" ;;
+  "y")
+    echo -n "$file" | xclip -selection clipboard ;;
+  "w")
+    xwallpaper --zoom "$file" && kill $(pidof nsxiv);;
+  esac
+done
