@@ -18,7 +18,7 @@
       ka = "killall";
       xw = "xwallpaper";
       nf = "neofetch";
-      tf = "pridefetch -f trans";
+      gf = "pridefetch -f genderfluid";
       pf = "pfetch";
       i = "inertia";
 
@@ -29,6 +29,7 @@
       sx = "startx ~/.config/x11/xinitrc";
       sdn = "doas shutdown -h now";
       kys = "kill $(pidof '$@')";
+      nheko = "systemctl restart --user pass-secret-service.service && nheko";
 
       # Nix system shortucts
       nix-system-update = "nix flake update $NIXFILES && doas nixos-rebuild switch --flake $NIXFILES";

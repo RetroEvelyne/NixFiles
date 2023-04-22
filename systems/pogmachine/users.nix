@@ -6,6 +6,6 @@
     shell = pkgs.zsh;
     description = "Evelyne";
     extraGroups = [ "adbusers" "dialout" "libvirtd" "plugdev" ];
-    openssh.authorizedKeys.keyFiles = [ ../../evelyne/common/ssh/id_ed25519.pub ];
+    openssh.authorizedKeys.keyFiles = [ ../../evelyne/common/ssh/id_ed25519.pub ../../evelyne/common/ssh/maddie.pub ];
   };
 }

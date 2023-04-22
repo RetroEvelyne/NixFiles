@@ -97,9 +97,9 @@
 
       # Prompt character
       character = {
-        success_symbol = "-> [λ](bold purple)";
-        error_symbol = "-> [λ](bold red)";
-        vimcmd_symbol = "-> [λ](bold green)";
+        success_symbol = "-> [](bold purple)";
+        error_symbol = "-> [](bold red)";
+        vimcmd_symbol = "-> [](bold green)";
       };
 
       # When in a deep directory or git repo
