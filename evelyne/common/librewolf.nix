@@ -6,7 +6,7 @@
     settings = {
       "browser.uidensity" = 1;
       "webgl.disabled" = false;
-      "privacy.resistFingerprinting" = false;
+      "privacy.resistFingerprinting" = true;
     };
   };
 }

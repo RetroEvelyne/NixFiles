@@ -12,6 +12,10 @@
     # Use startx for starting window managers
     displayManager = {
       startx.enable = true;
+/*      xpra = {
+        enable = true;
+        pulseaudio = true;
+      };*/
     };
   };
 }

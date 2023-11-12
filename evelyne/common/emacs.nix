@@ -2,6 +2,8 @@
 
 {
   home.packages = with pkgs; [
-    go # Go
+    emacs
+    ripgrep
+    fd
   ];
 }
