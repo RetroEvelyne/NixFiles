@@ -2,6 +2,7 @@
   description = "Evelyne's NixOS configurations";
 
   inputs = {
+    nixpkgs.url = "nixpkgs/nixos-unstable";
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";

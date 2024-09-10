@@ -11,8 +11,8 @@
   networking.wireless.enable = true;
   networking.wireless.networks = {
     # Home router
-    "VM4321342" = {
-      psk = "eabRnUdfrsw7mxdd";
+    "SKYHZDH2" = {
+      psk = "aFTEGPD6YFsUe8";
     };
     # Mum's phone
     "HUAWEI P smart 2019" = {

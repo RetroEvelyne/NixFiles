@@ -7,7 +7,7 @@ while getopts "sctd:" options; do
 	case $options in
 		s)
 			echo "sswm: save mode"
-      name=$(date --iso-8601=minutes)
+      name=$(date --iso-8601=seconds)
 			maim -s -u -f png > $SST_PIC_DIR/$name.png
 			echo "sswm: imaged saved as $SST_PIC_DIR/$name.png"
 			;;
