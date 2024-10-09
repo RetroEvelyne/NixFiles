@@ -5,11 +5,6 @@
     gh
   ];
 
-  home.file.".local/bin/git-sync" = {
-    source = ./git/git-sync.sh;
-    executable = true;
-  };
-
   programs.git = {
     enable = true;
     lfs.enable = true;
